@@ -1,3 +1,7 @@
+// Original code: 'Oh My Glasses' by Zul Hilmi, sourced from https://editor.p5js.org/zulx/sketches/F3zhSzmUr
+
+// Modified by Arash Nouri in October 2021
+
 let video;
 let poseNet;
 let eleftX = 0;
@@ -12,10 +16,17 @@ let offsetX = 640;
 let offsetY = 480;
 
 // Loads images that are overlayed on user's face
+// Images sourced from Twemoji (https://twemoji.twitter.com/)
 
 function preload() {
-    img = loadImage('img/oni.png');
+    img = loadImage('img/pumpkin.png');
     img2 = loadImage('img/ghost.png');
+    img3 = loadImage('img/boar.png');
+    img4 = loadImage('img/clown.png');
+    img5 = loadImage('img/oni.png');
+    img6 = loadImage('img/vampire.png');
+    img7 = loadImage('img/zombie.png');
+    img8 = loadImage('img/wizard.png');
 }
 
 function setup() {
@@ -27,7 +38,6 @@ function setup() {
 }
 
 // Find keypoints corresponding with the left eye, right eye, & nose
-// 
 
 function gotPoses(poses) {
     // console.log(poses);	
@@ -69,7 +79,7 @@ function modelReady() {
 // }
 
 // Image is overlayed & centered on face, follows nose coordinates
-// Original code kept to dynamically resize image based on distance between eyes
+// Original distance code kept to dynamically resize image based on distance between eyes
 
 function draw() {
     image(video, 0, 0, windowWidth, windowHeight);
@@ -77,6 +87,8 @@ function draw() {
     // Tracks distance between eyes, used to dynamically resize image based on how far away user's head is from camera
     let d = dist(eleftX, eleftY, erightX, erightY) * 8;
     
+    // Troubleshooting code, displays positions of nose tracking data & draws a line from the edge of the screen to the nose
+
     // image(img, noseX, noseY, d * 8, d * 8);
     // image(img, noseX, noseY, 100, 100);
 

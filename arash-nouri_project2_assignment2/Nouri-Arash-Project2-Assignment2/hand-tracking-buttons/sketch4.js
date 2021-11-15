@@ -1,3 +1,7 @@
+// Original code by Mark Shufflebottom, made in Winter 2021
+
+// Modified by Arash Nouri in October 2021
+
 let cam;
 let poseNet;
 let btn1, btn2, btn3;
@@ -18,11 +22,14 @@ setup = () => {
     handR = createVector(width / 2, height / 2);
 
     noStroke();
-    btn1 = new HButton((width / 3) - 200, height - 200, "Section 1");
-    btn2 = new HButton((width / 2), height - 200, "Section 2");
-    btn3 = new HButton((width / 1.5) + 200, height - 200, "Section 3");
+    // Positions of buttons modified to fit into thirds on the screen
+    btn1 = new HButton((width / 3) - 200, height - 200, "Button 1");
+    btn2 = new HButton((width / 2), height - 200, "Button 2");
+    btn3 = new HButton((width / 1.5) + 200, height - 200, "Button 3");
 }
 
+
+// Retrieves coordinates of left and right wrists
 let gotPoses = (poses) => {
     //console.log(poses);
     //only detect if there is a person
@@ -65,26 +72,28 @@ draw = () => {
     fill(50);
     textAlign(CENTER);
     textSize(48);
-    if (controller == "Section 1") {
+    if (controller == "Button 1") {
         //content for maybe intro section goes here
-        text("First Section", width / 2, height - 450);
+        text("First Button", width / 2, height - 450);
     }
-    if (controller == "Section 2") {
+    if (controller == "Button 2") {
         mainDraw();
         //main interaction section - probably won't need a button
-        text("Second Section", width / 2, height - 450);
+        text("Second Button", width / 2, height - 450);
     }
-    if (controller == "Section 3") {
+    if (controller == "Button 3") {
         //some kind of end section 
-        text("Third Section", width / 2, height - 450);
+        text("Third Button", width / 2, height - 450);
         //reset to beginning after 5 seconds
         setTimeout(() => {
-            controller = "Section 1";
+            controller = "Button 1";
         }, 5000);
     }
 
 }
 
+
+// Draws scattered colourful circles on the screen, triggered when the user hovers their hand over button 2
 let mainDraw = () => {
     //this is what you want to draw in your project
     fill(random(255), random(255), random(255));
@@ -105,6 +114,8 @@ class HButton {
     update(lx, ly, rx, ry) {
         rectMode(CENTER);
         fill(92, 107, 192, 100);
+        // Defines position & size of buttons
+        // Size of buttons increased to allow easier interaction
         rect(this.x, this.y, 360, 320, 10);
         
 
@@ -121,6 +132,7 @@ class HButton {
             if (this.hover < 0) this.hover = 0;
         }
         fill(63, 81, 181);
+        // Hover effect that is triggered when user hovers their hand over button
         rect(this.x, this.y, this.hover, 320, 10);
 
         rectMode(CORNERS);
