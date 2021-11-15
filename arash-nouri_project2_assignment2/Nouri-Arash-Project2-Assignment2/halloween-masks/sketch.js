@@ -14,7 +14,7 @@ let offsetY = 480;
 // Loads images that are overlayed on user's face
 
 function preload() {
-    img = loadImage('img/clown.png');
+    img = loadImage('img/oni.png');
     img2 = loadImage('img/ghost.png');
 }
 
@@ -80,12 +80,12 @@ function draw() {
     // image(img, noseX, noseY, d * 8, d * 8);
     // image(img, noseX, noseY, 100, 100);
 
-    textSize(20); fill(255); noStroke();
-    text(d, 400, 400);
-    text("input-X = "+Math.round(noseX), 200, 50);
-    text("input-Y = "+Math.round(noseY), 50, 50);
-    stroke(255, 0, 0); strokeWeight(5);
-    line(0, 0, noseX *  (windowWidth / offsetX), noseY * (windowHeight / offsetY));
+    // textSize(20); fill(255); noStroke();
+    // text(d, 400, 400);
+    // text("input-X = "+Math.round(noseX), 200, 50);
+    // text("input-Y = "+Math.round(noseY), 50, 50);
+    // stroke(255, 0, 0); strokeWeight(5);
+    // line(0, 0, noseX *  (windowWidth / offsetX), noseY * (windowHeight / offsetY));
     
     image(img, noseX * (windowWidth / offsetX) - (d / 2), noseY * (windowHeight / offsetY) - (d / 2), d, d);
 }

@@ -18,9 +18,9 @@ setup = () => {
     handR = createVector(width / 2, height / 2);
 
     noStroke();
-    btn1 = new HButton((width / 2) - 200, height - 200, "Section 1");
+    btn1 = new HButton((width / 3) - 200, height - 200, "Section 1");
     btn2 = new HButton((width / 2), height - 200, "Section 2");
-    btn3 = new HButton((width / 2) + 200, height - 200, "Section 3");
+    btn3 = new HButton((width / 1.5) + 200, height - 200, "Section 3");
 }
 
 let gotPoses = (poses) => {
@@ -57,7 +57,7 @@ draw = () => {
     btn3.update(handL.x, handL.y, handR.x, handR.y);
 
     //draw hands
-    fill(0, 200, 0, 100);
+    fill(255, 87, 34, 100);
     ellipse(handL.x, handL.y, 50);
     ellipse(handR.x, handR.y, 50);
 
@@ -67,16 +67,16 @@ draw = () => {
     textSize(48);
     if (controller == "Section 1") {
         //content for maybe intro section goes here
-        text("First Section", width / 2, height - 250);
+        text("First Section", width / 2, height - 450);
     }
     if (controller == "Section 2") {
         mainDraw();
         //main interaction section - probably won't need a button
-        text("Second Section", width / 2, height - 250);
+        text("Second Section", width / 2, height - 450);
     }
     if (controller == "Section 3") {
         //some kind of end section 
-        text("Third Section", width / 2, height - 250);
+        text("Third Section", width / 2, height - 450);
         //reset to beginning after 5 seconds
         setTimeout(() => {
             controller = "Section 1";
@@ -104,8 +104,9 @@ class HButton {
 
     update(lx, ly, rx, ry) {
         rectMode(CENTER);
-        fill(0, 200, 0, 100);
-        rect(this.x, this.y, 360, 240);
+        fill(92, 107, 192, 100);
+        rect(this.x, this.y, 360, 320, 10);
+        
 
         let ld = dist(this.x, this.y, lx, ly);
         let rd = dist(this.x, this.y, rx, ry);
@@ -113,19 +114,19 @@ class HButton {
             this.hover += 2;
             if (this.hover > 120) {
                 controller = this.label;
-                this.hover -= 6;
+                this.hover -= 60;
             }
         } else {
             if (this.hover > 0) this.hover -= 6;
             if (this.hover < 0) this.hover = 0;
         }
-        fill(255, 125, 0);
-        rect(this.x, this.y, this.hover, 40);
+        fill(63, 81, 181);
+        rect(this.x, this.y, this.hover, 320, 10);
 
         rectMode(CORNERS);
         fill(255);
         textAlign(CENTER);
-        textSize(24);
+        textSize(48);
         text(this.label, this.x, this.y + 9);
 
     }
