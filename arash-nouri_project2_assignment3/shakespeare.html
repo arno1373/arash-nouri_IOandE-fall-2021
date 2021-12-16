@@ -1,3 +1,6 @@
+<!-- Original code by R. Luke DuBois, created in October 2017, sourced from https://github.com/IDMNYU/p5.js-speech -->
+<!-- Modified by Arash Nouri in November 2021 -->
+
 <html>
 <head>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.5/p5.min.js"></script>
@@ -14,7 +17,13 @@
 	{
 		// input dialog:
 		// input = createInput("testing one two three!!!");
+
+		// Added dialogue from Hamlet to speech synthesis input field
+		
 		input = createInput("To be, or not to be, that is the question. Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them. to die, to sleep No more, and by a sleep, to say we end The heart-ache, and the thousand natural shocks That Flesh is heir to? 'Tis a consummation Devoutly to be wished. To die, to sleep, To sleep, perchance to Dream, aye, there's the rub, For in that sleep of death, what dreams may come, When we have shuffled off this mortal coil, Must give us pause.");
+
+		// Added back and forth dialogue from Romeo & Juliet, meant to be 2 different bots speaking to one another
+
 		// input = createInput("Do you bite your thumb at us, sir? I do bite my thumb, sir. Do you bite your thumb at us, sir? Is the law of our side, if I say ay? No. No, sir, I do not bite my thumb at you, sir, but I bite my thumb, sir. Do you quarrel, sir? Quarrel sir! no, sir.");
 		input.style("width", 400);
   		input.position(20, 65);
@@ -39,7 +48,7 @@
   		pslider.position(20, 180);
   		pslider.mouseReleased(setPitch);
 		// labels:
-		label = createDiv("say something:");
+		label = createDiv("Enter a line from Shakespeare:");
 		label.position(20, 40);
 		label = createDiv("interrupt?");
 		label.position(125, 100);
